@@ -1,6 +1,5 @@
 /*Write a program to create a child process in parallel to main process.Define an array of numbers the child process
 has to calculate sum of even numbers and parent process has to calculate sum of odd numbers.*/
-
 #include <stdio.h>
 #include <unistd.h>
 int main()
