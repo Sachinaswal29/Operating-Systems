@@ -2,18 +2,22 @@
 
 #include <stdio.h>
 #include <unistd.h>
+
 int main()
 {
-    printf("Orphan Process:\n\n");
+    printf("Sachin Aswal\n\n");
+    printf("Orphan Process\n\n");
     int x = fork();
-    if (x == 0)
+    if (x != 0)
     {
-        printf("Child process id= %d\n", getpid());
-        printf("Parent process id= %d\n", getppid());
+        printf("Process ID of Parent: %d\n", getpid());
     }
     else
     {
         sleep(5);
-        printf("Process id of parent = %d\n", getpid());
+        printf("Process ID of child: %d\n", getpid());
+        printf("Its Parent ID: %d\n", getppid());
     }
+    return 0;
 }
+
