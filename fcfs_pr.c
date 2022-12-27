@@ -1,0 +1,37 @@
+#include <stdio.h>
+#define max 20
+int main()
+{
+    int pn, page[max], fn, frame[max], avail, pagefault = 0;
+    printf("Enter the number of page:");
+    scanf("%d", &pn);
+    printf("Enter the values of page:");
+    for (int i = 0; i < pn; i++)
+        scanf("%d", &page[i]);
+    printf("Enter the number of frame:");
+    scanf("%d", &fn);
+    for (int i = 0; i < fn; i++)
+        frame[i] = -1;
+    for (int i = 0; i < pn; i++)
+    {
+        avail = 0;
+        for (int j = 0; j < fn; j++)
+        {
+            if (page[i] == frame[j])
+            {
+                avail++;
+                pagefault--;
+            }
+        }
+        pagefault++;
+        if (pagefault <= fn && avail == 0)
+            frame[i] = page[i];
+        else if (avail == 0)
+            frame[(pagefault - 1) % fn] = page[i];
+        printf("\n");
+        for (int k = 0; k < fn; k++)
+            printf("%d\t", frame[k]);
+    }
+    printf("\nThe page fault is: %d", pagefault);
+    return 0;
+}
